@@ -8,6 +8,11 @@ let NAME = sessionStorage.getItem('name')
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
+var SlocalTracks = {
+  screenVideoTrack: null,
+  audioTrack: null,
+  screenAudioTrack: null
+};
 let localTracks = []
 let remoteUsers = {}
 
@@ -23,7 +28,7 @@ let joinAndDisplayLocalStream = async () => {
         console.error(error)
         window.open('/', '_self')
     }
-    
+
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
 
     let member = await createMember()
@@ -32,7 +37,7 @@ let joinAndDisplayLocalStream = async () => {
                      <div class="video-player" id="user-${UID}"></div>
                      <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
                   </div>`
-    
+
     document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
     localTracks[1].play(`user-${UID}`)
     await client.publish([localTracks[0], localTracks[1]])
@@ -137,7 +142,66 @@ window.addEventListener("beforeunload",deleteMember);
 
 joinAndDisplayLocalStream()
 
+
+// screen share feature
+let screenshare = async (e) => {
+
+console.log("publish success");
+
+ let screenTrack;
+let l=await AgoraRTC.createScreenVideoTrack()
+console.log(l)
+alert(l)
+/*
+  let player = `<div  class="video-container" id="user-container-${UID}">
+                     <div class="video-player" id="user-${UID}"></div>
+                     <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
+                  </div>`
+
+    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+    localTracks[1].play(`user-${UID}`)
+    await client.publish([localTracks[0], localTracks[1]])
+
+ console.log(lsc)
+ console.log("test sceen share")
+
+
+//createScreenVideoTrack(config: ScreenVideoTrackInitConfig, withAudio: "enable"): Promise<[ILocalVideoTrack, ILocalAudioTrack]>
+
+*/
+/*
+if(screenTrack instanceof Array){
+    SlocalTracks.screenVideoTrack = screenTrack[0]
+    SlocalTracks.screenAudioTrack = screenTrack[1]
+  }
+  else{
+    SlocalTracks.screenVideoTrack = screenTrack
+  }
+  // play local video track
+  localTracks.screenVideoTrack.play("local-player");
+  $("#local-player-name").text(`localVideo(${options.uid})`);
+
+  //bind "track-ended" event, and when screensharing is stopped, there is an alert to notify the end user.
+  localTracks.screenVideoTrack.on("track-ended", () => {
+    alert(`Screen-share track ended, stop sharing screen ` + SlocalTracks.screenVideoTrack.getTrackId());
+    SlocalTracks.screenVideoTrack && SlocalTracks.screenVideoTrack.close();
+    SlocalTracks.screenAudioTrack && SlocalTracks.screenAudioTrack.close();
+    SlocalTracks.audioTrack && SlocalTracks.audioTrack.close();
+  });
+
+  // publish local tracks to channel
+  if(SlocalTracks.screenAudioTrack == null){
+    await client.publish([SlocalTracks.screenVideoTrack, SlocalTracks.audioTrack]);
+  }
+  else{
+    await client.publish([SlocalTracks.screenVideoTrack, SlocalTracks.audioTrack, SlocalTracks.screenAudioTrack]);
+  }
+
+*/
+}
+
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
+document.getElementById('screen-btn').addEventListener('click', screenshare)
 
