@@ -21,8 +21,10 @@ Backend: DJANGO SQLITE
 
 # Installation
 
-● git clone https://github.com/Shivamjha12/milo_video_conferencing_app.git
-● pip install -r requirements.txt
+1 git clone https://github.com/Shivamjha12/milo_video_conferencing_app.git
+
+
+2 pip install -r requirements.txt
 
 
 
