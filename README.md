@@ -20,8 +20,12 @@ Frontend: HTML,CSS,Bootstrap,Js
 Backend: DJANGO SQLITE
 
 # Installation
-git clone https://github.com/Shivamjha12/milo_video_conferencing_app.git
-pip install -r requirements.txt
+
+● git clone https://github.com/Shivamjha12/milo_video_conferencing_app.git
+● pip install -r requirements.txt
+
+
+
 
 ## Acknowledgements
 
