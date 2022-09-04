@@ -13,6 +13,8 @@ var SlocalTracks = {
   audioTrack: null,
   screenAudioTrack: null
 };
+
+let str=[]
 let localTracks = []
 let remoteUsers = {}
 
@@ -30,7 +32,8 @@ let joinAndDisplayLocalStream = async () => {
     }
 
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
-
+     console.log(localTracks)
+     alert(localTracks)
     let member = await createMember()
 
     let player = `<div  class="video-container" id="user-container-${UID}">
@@ -145,13 +148,38 @@ joinAndDisplayLocalStream()
 
 // screen share feature
 let screenshare = async (e) => {
-
+/*
 console.log("publish success");
 
  let screenTrack;
-let l=await AgoraRTC.createScreenVideoTrack()
-console.log(l)
-alert(l)
+let str=await AgoraRTC.createScreenVideoTrack()
+console.log(str[
+'mediaStreamTrack'])
+
+*/
+
+
+AgoraRTC.createScreenVideoTrack({
+  // Set the encoder configurations. For details, see the API description.
+  encoderConfig: "1080p_1",
+}).then(localScreenTrack => {
+
+
+
+
+
+        player = `<div  class="video-container" id="user-container-${user.uid}">
+            <div class="video-player" id="user-${user.uid}"></div>
+            <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
+        </div>`
+
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+        user.videoTrack.play(`user-${user.uid}`)
+
+
+});
+
+
 /*
   let player = `<div  class="video-container" id="user-container-${UID}">
                      <div class="video-player" id="user-${UID}"></div>
@@ -200,8 +228,43 @@ if(screenTrack instanceof Array){
 */
 }
 
+
+
+async function startScreenCall() {
+
+
+
+
+  const screenTrack = await AgoraRTC.createScreenVideoTrack();
+
+
+
+
+    let player = `<div  class="video-container" id="user-container-${UID}">
+                     <div class="video-player" id="user-${UID}"></div>
+                     <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
+                  </div>`
+
+    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+    screenTrack.play(`user-${UID}`)
+    await client.publish(screenTrack)
+
+  console.log(screenTrack)
+  alert(screenTrack)
+
+
+
+  //return screenClient;
+}
+
+
+
+
+
+
+
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
-document.getElementById('screen-btn').addEventListener('click', screenshare)
+document.getElementById('screen-btn').addEventListener('click', startScreenCall)
 
