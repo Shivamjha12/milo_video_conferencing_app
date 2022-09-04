@@ -1,7 +1,4 @@
 
-# video conference application 
-
-
 # Video conference application
 In this repo we’ll show how video conference app is build using python and agora sdk
 
@@ -16,8 +13,6 @@ integrated Oauth for users to login
 ● Login using google oauth
 
 2. User can create room and share the room name to other user can join the room with room name
-
-
 
 # Techstack 
 Frontend: HTML,CSS,Bootstrap,Js
