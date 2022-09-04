@@ -1,0 +1,55 @@
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<head>
+<style>
+.googleimg{
+      margin-top:10px;
+      width:23%;
+      height: 47px;
+      margin-left: 37.5%;
+      margin-right: 50%;
+  }
+</style>
+</head>
+<h1 class="text-center my-5">{% trans "Sign In" %}</h1>
+
+{% get_providers as socialaccount_providers %}
+
+<div class="socialaccount_ballot">
+
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  <div class="container">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+  </div>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+</form>
+
+<div class="container">
+ <a href="{% provider_login_url 'google' %}" ><img class="googleimg" src="https://ltgovcc.skills21.org/assets/signin_google-8ccd860edd04188160d7d75b1263736bed698179513caca8071f92399baa0f6e.png"> </img></a>
+
+  <div class="text-center">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+<p class="text-center">If you have not created an account yet, then please 
+  <a href="{{ signup_url }}">sign up</a>
+</p>
+
+</div>
+  
+{% endblock %}
