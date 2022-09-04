@@ -13,7 +13,7 @@ use :tempuser as login and password
 # About project
 videoconferencing  is the two-way or multipoint reception and transmission of audio and video signals by people in different locations for real time communication
 integrated Oauth for users to login 
-![Alt text](https://drive.google.com/uc?export=view&id=1in8yEO6Q7LlLxlIy-SOMrx0jDDuqzhb4/path/to/img.jpg "Optional title")
+![Alt text](https://drive.google.com/uc?export=view&id=1in8yEO6Q7LlLxlIy-SOMrx0jDDuqzhb4 "Optional title")
 1. Login and signup
 ● Username - password
 ● Login using google oauth
