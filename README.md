@@ -1,29 +1,34 @@
-Fullstack Web Developer
-Flipr Hackathon XII Task Submission Fullstack Web Developer
 
-loanlending Application (C2C)
-Problem statement
-You are expected to build a web application where users can ask or give personal loans to other users of the application. This platform can also be called as a C2C (Customer to Customer) personal loan lending platform.
+# video conference application 
 
-What we done to solve the problem
-We make Oneasy web application with Django framework(Backend) and html,css,Bootstrap4(Fronted)
 
-User can Signup or create account on Our Platform with Our User Registration Module class with email Verification activation link
-User have to Create their by giving all details like Adharcard,pancard,annual income age etc. by these details we make cibil score between 500 and 700
-User can add loan request According their [maximum loan limit]
-Users can [search,sort,filter] on Search loan request page.
-If User like the request They can Accept the request and we send mail to user who added that request, we say that your request is accepted.
-Installation
-Install my-project with pip install
+# Video conference application
+In this repo we’ll show how video conference app is build using python and agora sdk
 
-  git clone https://github.com/Shivamjha12/loanlending.git
-  pip install -r requirements.txt
-Features
-Calculation of cibil score between 500 and 700
-Add Loan Request
-search,sort,filter
-Profile creation
-Technology
-Frontend: HTML CSS Bootstrap
+# About project
+videoconferencing  is the two-way or multipoint reception and transmission of audio and video signals by people in different locations for real time communication
+integrated Oauth for users to login 
+![maxresdefault](https://user-images.githubusercontent.com/84653831/169335142-da9ad411-90f0-47d2-b1ed-3e7e85319f5a.jpg)
+
+# Features
+1. Login and signup
+● Username - password
+● Login using google oauth
+
+2. User can create room and share the room name to other user can join the room with room name
+
+
+
+# Techstack 
+Frontend: HTML,CSS,Bootstrap,Js
 
 Backend: DJANGO SQLITE
+
+# Installation
+git clone https://github.com/Shivamjha12/milo_video_conferencing_app.git
+pip install -r requirements.txt
+
+## Acknowledgements
+
+ - [agora sdk](https://docs.agora.io/en/All/downloads?platform=Web)
+ - [socialauth implementation](https://www.youtube.com/watch?v=56w8p0goIfs)
