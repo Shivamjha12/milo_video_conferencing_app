@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('allauth.urls')),
-    path('', include('videocall.urls'))
+    path('', include('milo_main.urls')),
+    path('auth/', include('allauth.urls')),
+    # path('milo/', include('accounts.urls')),
+    path('createroom', include('videocall.urls'))
 ]
