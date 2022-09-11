@@ -36,7 +36,11 @@ Backend: DJANGO SQLITE
 
 # After installation to run the website 
 1 go to the directory where manage.py is present
+
+
 2 run the command python manage.py runserver
+
+
 3 visit to the local host link
 
 
